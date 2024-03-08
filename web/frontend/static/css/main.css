@@ -3,10 +3,13 @@ body {
 }
 
 .window_container {
+    --r: 16 / 9;
+
+    aspect-ratio: var(--r);
+    width:min(75%, 75vh*(var(--r)));
+    overflow: hidden;
     background-color: white;
-    width: 75%;
-    height: 75%;
-    border-radius: 1%;
+    border-radius: 1% 1%;
     position: absolute;
     top: 50%;
     left: 50%;
