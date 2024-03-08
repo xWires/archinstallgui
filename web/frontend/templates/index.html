@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="static/css/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <div class="window_container">
+            <div class="window">
+                <input type="text" placeholder="command" id="command_input">
+                <button id="executeButton">Execute Command</button>
+                <script>
+                    $(document).ready(function() {
+                        $('#executeButton').click(function() {
+                            console.log('Command value:', $('#command_input').val());
+                            $.ajax({
+                                url: 'http://localhost:9091/execute_command',
+                                type: 'POST',
+                                contentType: 'application/json',
+                                data: JSON.stringify({ command: $('#command_input').val() }),
+                                success: function(response) {
+                                    alert('Command executed successfully:\n' + response);
+                                },
+                                error: function(xhr, status, error) {
+                                    alert('Error executing command:\n' + xhr.responseText);
+                                }
+                            });
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </body>
+</html>
