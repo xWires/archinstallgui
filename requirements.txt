@@ -2,4 +2,6 @@ pywebview>=5.0.5
 flask>=3.0.2
 Flask-CORS
 qtpy
+pyqt5
 PyQtWebEngine
+WebView
