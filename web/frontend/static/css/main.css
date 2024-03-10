@@ -24,4 +24,23 @@ p, a, h1, h2, h3, li, input, button {
 .window {
     width: auto;
     margin-left: 2%;
+    margin-right: 2%;
+}
+
+.next {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
+
+.fancy_button {
+    color: #000000;
+    background-color: darkgray;
+    padding: 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.fancy_button:hover {
+    background-color: gray;
 }

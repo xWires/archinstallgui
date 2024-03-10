@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../static/css/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <div class="window_container">
+            <div class="window">
+                <h2>Disks</h2>
+                <p>Click the button below to launch GParted, create a boot partition and a root partition, then enter the location of them in the boxes below</p>
+                <button id="launch_gparted">Launch GParted</button>
+                <script>
+                    $(document).ready(function() {
+                        $('#launch_gparted').click(function() {
+                            $.ajax({
+                                url: 'http://localhost:9091/launch_gparted',
+                                type: 'POST',
+                                contentType: 'application/json',
+                                success: function(response) {
+                                    alert('Command executed successfully:\n' + response);
+                                },
+                                error: function(xhr, status, error) {
+                                    alert('Error executing command:\n' + xhr.responseText);
+                                }
+                            });
+                        });
+                    });
+                </script>
+                <br>
+                <br>
+                <br>
+                <input type="text" placeholder="Boot Partition" id="boot_input">
+                <br>
+                <br>
+                <input type="text" placeholder="Root Partition" id="root_input">
+                <br>
+                <br>
+                <button id="format_partitions">Format Partitions</button>
+                <script>
+                    $(document).ready(function() {
+                        $('#format_partitions').click(function() {
+                            $.ajax({
+                                url: 'http://localhost:9091/format_partitions',
+                                type: 'POST',
+                                contentType: 'application/json',
+                                data: JSON.stringify({ boot_partition: $('#boot_input').val(), root_partition: $('#root_input').val() }),
+                                success: function(response) {
+                                    $('#next').css('display', 'absolute');
+                                },
+                                error: function(xhr, status, error) {
+                                    alert('Error executing command:\n' + xhr.responseText);
+                                }
+                            });
+                        });
+                    });
+                </script>
+                <a class="next fancy_button" href="/packages" style="display: none;" id="next">Next</a>
+            </div>
+        </div>
+    </body>
+</html>

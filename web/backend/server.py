@@ -17,9 +17,12 @@ def execute_command(command):
 def launch_gparted():
     return execute_command("gparted")
 
-@app.route("/launch_cfdisk", methods=["POST"])
+@app.route("/format_disks", methods=["POST"])
 def launch_cfdisk():
-    return execute_command("kitty cfdisk")
+    data = request.json
+    boot_partition = data.get("boot_partition")
+    root_partition = data.get("root_partition")
+    return execute_command(f"mkfs.ext4 {root_partition} && mkfs.fat -F 32 {boot_partition} && mount --mkdir {root_partition} /mnt && mount --mkdir {boot_partition} /mnt/boot")
 
 if __name__ == '__main__':
     app.run(debug=False, port=9091, host="127.0.0.1")
