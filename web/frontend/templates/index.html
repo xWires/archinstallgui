@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="static/css/main.css">
+        <link rel="stylesheet" href="../static/css/main.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
         <div class="window_container">
             <div class="window">
+                <h2>Arch Linux Installer</h2>
+                <p>Welcome to the Arch Linux Installer</p>
                 <input type="text" placeholder="command" id="command_input">
                 <button id="executeButton">Execute Command</button>
                 <script>
@@ -19,6 +21,24 @@
                                 type: 'POST',
                                 contentType: 'application/json',
                                 data: JSON.stringify({ command: $('#command_input').val() }),
+                                success: function(response) {
+                                    alert('Command executed successfully:\n' + response);
+                                },
+                                error: function(xhr, status, error) {
+                                    alert('Error executing command:\n' + xhr.responseText);
+                                }
+                            });
+                        });
+                    });
+                </script>
+                <button id="launch_gparted">Launch GParted</button>
+                <script>
+                    $(document).ready(function() {
+                        $('#launch_gparted').click(function() {
+                            $.ajax({
+                                url: 'http://localhost:9091/launch_gparted',
+                                type: 'POST',
+                                contentType: 'application/json',
                                 success: function(response) {
                                     alert('Command executed successfully:\n' + response);
                                 },

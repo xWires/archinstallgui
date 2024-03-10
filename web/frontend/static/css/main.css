@@ -2,6 +2,10 @@ body {
     background-color: purple;
 }
 
+p, a, h1, h2, h3, li, input, button {
+    font-family: Arial, Helvetica, sans-serif
+}
+
 .window_container {
     --r: 16 / 9;
 
@@ -19,5 +23,5 @@ body {
 
 .window {
     width: auto;
-    padding: 2%;
+    margin-left: 2%;
 }
