@@ -17,7 +17,7 @@ def execute_command(command):
 def launch_gparted():
     return execute_command("gparted")
 
-@app.route("/format_disks", methods=["POST"])
+@app.route("/format_disk", methods=["POST"])
 def launch_cfdisk():
     data = request.json
     boot_partition = data.get("boot_partition")

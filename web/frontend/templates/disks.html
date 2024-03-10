@@ -42,7 +42,7 @@
                     $(document).ready(function() {
                         $('#format_partitions').click(function() {
                             $.ajax({
-                                url: 'http://localhost:9091/format_partitions',
+                                url: 'http://localhost:9091/format_disk',
                                 type: 'POST',
                                 contentType: 'application/json',
                                 data: JSON.stringify({ boot_partition: $('#boot_input').val(), root_partition: $('#root_input').val() }),
