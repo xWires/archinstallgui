@@ -49,6 +49,24 @@
                         });
                     });
                 </script>
+                <button id="launch_cfdisk">Launch CFDisk</button>
+                <script>
+                    $(document).ready(function() {
+                        $('#launch_cfdisk').click(function() {
+                            $.ajax({
+                                url: 'http://localhost:9091/launch_cfdisk',
+                                type: 'POST',
+                                contentType: 'application/json',
+                                success: function(response) {
+                                    alert('Command executed successfully:\n' + response);
+                                },
+                                error: function(xhr, status, error) {
+                                    alert('Error executing command:\n' + xhr.responseText);
+                                }
+                            });
+                        });
+                    });
+                </script>
             </div>
         </div>
     </body>
