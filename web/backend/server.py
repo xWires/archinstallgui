@@ -14,7 +14,7 @@ def execute_command(command):
         if e.returncode != 32:
             return e.output.decode('utf-8'), 500
         else:
-            return result.decode('utf-8'), 200
+            return e.output.decode('utf-8'), 200
 
 @app.route("/launch_gparted", methods=["POST"])
 def launch_gparted():

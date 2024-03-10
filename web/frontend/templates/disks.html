@@ -4,6 +4,11 @@
         <link rel="stylesheet" href="../static/css/main.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#next').hide();
+            })
+        </script>
     </head>
     <body>
         <div class="window_container">
@@ -48,7 +53,7 @@
                                 data: JSON.stringify({ boot_partition: $('#boot_input').val(), root_partition: $('#root_input').val() }),
                                 success: function(response) {
                                     alert(xhr.responseText);
-                                    $('#next').css('display', 'absolute');
+                                    $('#next').show();
                                 },
                                 error: function(xhr, status, error) {
                                     alert('Error executing command:\n' + xhr.responseText);
@@ -57,7 +62,7 @@
                         });
                     });
                 </script>
-                <a class="next fancy_button" href="/packages" style="display: none;" id="next">Next</a>
+                <a class="next fancy_button" href="/packages" id="next">Next</a>
             </div>
         </div>
     </body>
