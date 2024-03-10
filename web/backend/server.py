@@ -25,7 +25,7 @@ def launch_cfdisk():
     data = request.json
     boot_partition = data.get("boot_partition")
     root_partition = data.get("root_partition")
-    return execute_command(f"umount -q {boot_partition} & umount -q {root_partition} & mkfs.ext4 -qF {root_partition} & mkfs.fat -F 32 {boot_partition} & mount --mkdir {root_partition} /mnt & mount --mkdir {boot_partition} /mnt/boot")
+    return execute_command(f"umount -q {boot_partition}; umount -q {root_partition}; mkfs.ext4 -qF {root_partition}; mkfs.fat -F 32 {boot_partition}; mount --mkdir {root_partition} /mnt; mount --mkdir {boot_partition} /mnt/boot")
 
 if __name__ == '__main__':
     app.run(debug=False, port=9091, host="127.0.0.1")
