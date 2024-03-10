@@ -47,6 +47,7 @@
                                 contentType: 'application/json',
                                 data: JSON.stringify({ boot_partition: $('#boot_input').val(), root_partition: $('#root_input').val() }),
                                 success: function(response) {
+                                    alert(xhr.responseText);
                                     $('#next').css('display', 'absolute');
                                 },
                                 error: function(xhr, status, error) {
